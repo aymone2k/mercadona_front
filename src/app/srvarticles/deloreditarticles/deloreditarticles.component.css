@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .row {
+    display: flex;
+    margin: 0 -5px;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Create three equal columns that sits next to each other */
+  .column {
+    flex: 20%;
+    padding: 5px;
+  }
+
+  .bgColor{
+    background-color:#f3eadd;
+  }
+
+  .card {
+    box-shadow: 0 2px 2px 0;
+    padding: 10px;
+    text-align: center;
+    background-color: #f3eadd;
+  }

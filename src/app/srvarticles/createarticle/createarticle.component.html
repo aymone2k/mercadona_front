@@ -1,0 +1,81 @@
+
+<section class="vh-100">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 text-black">
+
+                <div class="px-5 ms-xl-4">
+                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+                    <span class="h1 fw-bold mb-0 create">Création d'un nouvel article</span>
+                </div>
+
+                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+                    <div class="container">
+                        <form style="width: 23rem;">
+
+
+                            <!-- <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> <strong>
+                                    ID </strong>
+                            <div class="form-outline">
+                                <input type="number" name="login" [(ngModel)]="article.id" id="form2Example18"
+                                    class="form-control form-control-lg" />
+                                <label class="form-label" for="form2Example18"></label>
+                            </div> -->
+
+                            <!-- <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                                <strong>MARQUE </strong> -->
+                            <div class="form-outline ">
+                                <input type="text" name="mdp" [(ngModel)]="article.marque" id="form2Example28"
+                                    class="form-control form-control-lg" placeholder="Marque de l'article" />
+                                <label class="form-label" for="form2Example28">MARQUE</label>
+                            </div>
+
+                            <!-- <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                                <strong>PRIX</strong> -->
+                            <div class="form-outline ">
+                                <input type="number" name="login" [(ngModel)]="article.prix" id="form2Example18"
+                                    class="form-control form-control-lg" min = 0 />
+                                <label class="form-label" for="form2Example18">PRIX</label>
+                            </div>
+
+                            <!-- <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                                <strong>DESCRIPTION </strong> -->
+                            <div class="form-outline">
+                                <input type="text" name="mdp" [(ngModel)]="article.description" id="form2Example28"
+                                    class="form-control form-control-lg" placeholder="Description de l'article"/>
+                                    <label class="form-label" for="form2Example18">DESCRIPTION</label>
+                            </div>
+
+                            <!-- <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                                <strong>URL </strong> -->
+                            <div class="form-outline">
+                                <input type="text" name="url" [(ngModel)]="article.url" id="form2Example28"
+                                    class="form-control form-control-lg" placeholder="/assets/images/nomfichier.extension"/>
+                                    <label class="form-label" for="form2Example18">URL</label>
+                            </div>
+
+                            <div class="pt-1 mb-2">
+                                <button class="btn btn-warning btn-lg btn-block" type="button"
+                                    (click)="create()">CREER</button>
+                            </div>
+                            <div class="pt-1 mb-2">
+
+                                <div class="alert alert-success">
+                                    <strong>{{message}}</strong>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-sm-6 px-0 d-none d-sm-block">
+                <img src="/assets/images/logo7.PNG" alt="Login image" class="w-80 vh-80"
+                    style="object-fit: cover; object-position: left;">
+            </div>
+        </div>
+    </div>
+</section>

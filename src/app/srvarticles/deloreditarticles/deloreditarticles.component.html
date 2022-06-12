@@ -1,0 +1,22 @@
+{{messagedel}}
+
+<div class="row row-cols-1 row-cols-md-5">
+    <div *ngFor="let x of MyList; let index = index;" class="text-black">
+
+        <div class="column">
+            <div class="card">
+                <div class="row-md-3 mb-2">
+                    <img src="{{x.url}}" style="width:100%">
+                </div>
+                <div class="bgColor row-md-3 mb-0 mt-0">
+                    <p>{{x.description}}</p><br>
+                    <p> <strong>{{x.prix}}€</strong> / {{x.marque}} </p>
+                    <button (click)="delete(x)" class="btn btn-danger">Supprimer</button>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

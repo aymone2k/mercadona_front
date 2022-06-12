@@ -1,0 +1,30 @@
+.info{
+    background-color:#f3eadd;
+}
+
+.search-container button:hover {
+    background:  #f3eadd;
+    width: 50;
+    object-position: center;
+  }
+
+  #s1{
+    border-radius: 20px;
+    border-color: #f3eadd;
+    border-block-width: 6px;
+
+}
+
+.row {
+  display: flex;
+  margin: 0 -5px;
+}
+
+
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+
