@@ -1,12 +1,19 @@
 
-
+<div class='mx-auto w-75'>
+    <button (click)='asc()'>Prix ASC</button>
+    <button (click)='desc()'>Prix DESC</button>
+    <button (click)='masc()'>Marque ASC</button>
+    Min : <input [(ngModel)]='min'>
+    Max : <input [(ngModel)]='max'>
+    <button (click)="prixbetween()">chercher par prix</button>
+</div>
 <div class="row row-cols-1 row-cols-md-5">
     <div *ngFor="let x of MyList; let index = index;" class="text-black">
 
         <div class="column">
             <div class="card">
                 <div class="row-md-3 mb-2">
-                    <a href="/findbyidarticle/1">
+                    <a href="/findbyidarticle/{{x.id}}">
                         <img src="{{x.url}}" style="width:100%">
                     </a>
                    

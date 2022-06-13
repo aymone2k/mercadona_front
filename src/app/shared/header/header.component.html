@@ -37,8 +37,8 @@
     <div class="position-absolute top-50 start-50 translate-middle w-50">
       <!-- <div class="search-container w-50" style="object-position: center;"> -->
       <form class="d-flex">
-        <input id="s1" class="form-control me-2" type="text" placeholder="Saisir un produit ou une marque...">
-        <button id="s1" class="btn btn-outline-dark" type="button" routerLink="/findbystring">Chercher</button>
+        <input id="s1" class="form-control me-2" type="text" placeholder="Saisir un produit ou une marque..." [(ngModel)]='str' [ngModelOptions]="{standalone: true}">
+        <button id="s1" class="btn btn-outline-dark" type="button" routerLink="/findbystring" (click)='search()'>Chercher</button>
 
       </form>
       <a href="/#!">

@@ -39,4 +39,8 @@ export class ServicearticleService {
   findbyMarAsc(){
     return this.http.get<Array<Article>>(this.url+"findallmarque")
   }
+
+  findByMarque(str: string){
+    return this.http.get<Article>(this.url+"findallmarque")
+  }
 }

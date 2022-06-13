@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServicearticleService } from '../servicearticle.service';
 
 @Component({
   selector: 'app-findallarticles',
@@ -13,40 +14,63 @@ export class FindallarticlesComponent implements OnInit {
   MyList: any;
   id: number;
   infoconnexion: string;
+  min: number;
+  max: number;
+  chaine: string;
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private srvart: ServicearticleService) { }
 
   ngOnInit(): void {
 
-    // let header: HeaderComponent;
-    // header.init();
+    if (sessionStorage.getItem("Mylist") == null) {
+      this.srvart.findAll().subscribe({
+        next: (data) => { this.MyList = data },
+        error: (err) => { console.log(err) },
+        complete: () => { console.log(this.MyList) }
+      })
+    } else {
+      this.MyList = JSON.parse(sessionStorage.getItem("Mylist"))
+      sessionStorage.removeItem("Mylist")
+    }
 
-    // if (sessionStorage.getItem("client") == null) {
-    //   this.router.navigate(['/login']);
-    //   this.message = "Erreur de connexion ! Veuillez vous authentifier !";
-    // }
-
-    // else {
-    //   this.infoconnexion = sessionStorage.getItem("client");
-    //   this.router.navigate(['/findallarticles']);
-    // }
-
-    this.http.get("http://localhost:8080/exo/articlerest").subscribe(
-      response => {
-        this.MyList = response;
-        console.log(this.MyList[0]);
-      }
-      ,
-      err => {
-        console.log("********KO********");
-      }
-    )
   }
 
-  deconnex(){
+  desc() {
+    this.srvart.findByPrixDesc().subscribe({
+      next: (data) => { this.MyList = data },
+      error: (err) => { console.log(err) },
+      complete: () => { console.log(this.MyList) }
+    })
+  }
+
+  asc() {
+    this.srvart.findByPrixAsc().subscribe({
+      next: (data) => { this.MyList = data },
+      error: (err) => { console.log(err) },
+      complete: () => { console.log(this.MyList) }
+    })
+  }
+
+  prixbetween() {
+    this.srvart.findByPrixEntre(this.min, this.max).subscribe({
+      next: (data) => { this.MyList = data },
+      error: (err) => { console.log(err) },
+      complete: () => { console.log(this.MyList) }
+    })
+  }
+
+  masc() {
+    this.srvart.findbyMarAsc().subscribe({
+      next: (data) => { this.MyList = data },
+      error: (err) => { console.log(err) },
+      complete: () => { console.log(this.MyList) }
+    })
+  }
+
+  deconnex() {
     sessionStorage.removeItem("client");
-}
+  }
 
 
 
