@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicearticleService } from 'src/app/srvarticles/servicearticle.service';
 import { Router } from '@angular/router';
+import { SrvcrudusersService } from 'src/app/srvusers/srvcrudusers.service';
 
 // import * as variable from 'maVariable';
 
@@ -11,25 +12,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+isAuth:boolean;
   infoconnexion: string;
   str: string;
 
-  constructor(private srv: ServicearticleService, private router: Router) { }
+  constructor(private srv: ServicearticleService, private router: Router, private srvUser: SrvcrudusersService) { }
 
   ngOnInit(): void {
 
-    this.init();
+    this.srvUser.isAuth$.subscribe(
+      (bool: boolean)=>{
+        this.isAuth = bool
+      } )
   }
 
-  init() {
-    if (sessionStorage.getItem("client") != null) {
-      this.infoconnexion = sessionStorage.getItem("client");
-    }
-  }
+
   deconnex() {
-    // this.init();
-    sessionStorage.removeItem("client");
+
+    this.srvUser.isAuth$.next(false);
+    sessionStorage.removeItem("user")
+
+  this.router.navigate(['/login'])
+
   }
 
   search() {

@@ -1,4 +1,4 @@
-
+<h3 *ngIf="isAuth"> Bienvenue {{user.prenom}} {{user.nom}}</h3>
 <div class='mx-auto w-75'>
     <button (click)='asc()'>Prix ASC</button>
     <button (click)='desc()'>Prix DESC</button>
@@ -10,13 +10,13 @@
 <div class="row row-cols-1 row-cols-md-5">
     <div *ngFor="let x of MyList; let index = index;" class="text-black">
 
-        <div class="column">
+        <div class="column"(click)="findArticle(x.id)">
             <div class="card">
-                <div class="row-md-3 mb-2">
-                    <a href="/findbyidarticle/{{x.id}}">
+                <div class="row-md-3 mb-2" >
+
                         <img src="{{x.url}}" style="width:100%">
-                    </a>
-                   
+
+
                 </div>
                 <div class="bgColor row-md-3 mb-0 mt-0">
                     <p>{{x.description}}</p><br>

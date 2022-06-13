@@ -53,7 +53,7 @@
     </div>
     >
 
-    <!-- 
+    <!--
     CONTACT / COMPTE / PANIER-->
 
     <div class="position-absolute top-50 start-100 translate-middle w-25">
@@ -80,17 +80,19 @@
           <a class="nav-link active link-dark" href="/home">Mam'Mam</a>
         </li> -->
 
-        <li class="nav-item">
-          <a class="nav-link link-dark" href="/findallarticles">Nos produits</a>
+        <li  class="nav-item ">
+          <a class="nav-link link-dark" routerLink="findallarticles">Nos produits</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link link-dark" href="/login">Login</a>
+        <li class="nav-item " *ngIf="isAuth==false">
+          <a class="nav-link link-dark" routerLink="login">Login</a>
         </li>
-
+        <li  class="nav-item " (click)="deconnex()" *ngIf="isAuth ==true">
+          <a class="nav-link" >Me Déconnecter</a>
+        </li>
       </ul>
-      <form class="d-flex w-auto">
-        <button class="info"><strong>{{infoconnexion}}</strong></button>
-        <button (click)="deconnex()" routerLink="/login" class="btn btn-outline-danger">DECONNEXION</button>
-      </form>
+      <div class="d-flex w-auto" *ngIf="isAuth ==true">
+
+        <button (click)="deconnex()" class="btn btn-outline-danger">DECONNEXION</button>
+      </div>
     </div>
   </nav>
