@@ -1,1 +1,56 @@
-<p>findbyiduser works!</p>
+<section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+
+        <div class="row d-flex justify-content-center align-items-center h-100">
+
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Récapitulatif de saisie des données: </p>
+                    <div class="card-body p-md-5">
+
+                        <table class="table  table-responsive table-hover text-center">
+                            <thead class="table-danger">
+
+                            </thead>
+                            <tbody>
+                                <td>
+                                    Mail:
+                                </td>
+
+                                <td>
+                                    {{user.mail}}
+                                </td>
+
+                                <td>
+                                    Nom:
+                                </td>
+
+                                <td>
+                                    {{user.nom}}
+                                </td>
+
+                                <td>
+                                    Prénom: 
+                                </td>
+                
+                                <td>
+                                    {{user.prenom}}
+                                </td>
+
+                                <td>
+                                    Mot de passe: 
+                                </td>
+                
+                                <td>
+                                    {{user.mdp}}
+                                </td>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

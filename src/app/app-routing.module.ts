@@ -23,6 +23,7 @@ import { LoginComponent } from './srvusers/login/login.component';
 import { SubscribeComponent } from './srvusers/subscribe/subscribe.component';
 import { UpdatepassComponent } from './srvusers/updatepass/updatepass.component';
 import { UpdateuserComponent } from './srvusers/updateuser/updateuser.component';
+import { UpdateuserpassComponent } from './srvusers/updateuserpass/updateuserpass.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
    { path: 'updateuser/:id', component: UpdateuserComponent },
    { path: 'bill', component: BillComponent },
    { path: 'updatepass', component: UpdatepassComponent},
+   { path: 'updateuserpass/:id', component: UpdateuserpassComponent},
    { path: 'cart', component: CartComponent}
 ];
 

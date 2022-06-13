@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { SrvcrudusersService } from '../srvcrudusers.service';
 
@@ -15,33 +15,50 @@ export class UpdatepassComponent implements OnInit {
   user: User = new User();
   message: string;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private srv: SrvcrudusersService) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private srv: SrvcrudusersService, private router: Router) { }
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(params => {
-      this.user.mail = params['id'];
-    })
 
-    this.init();
   }
 
-  init() {
-    this.http.get<User>("http://localhost:8080/exo/personne/" + this.user.mail).subscribe(
-      response => {
-        console.log("********Utilisateur trouvé!********")
-        this.user = response;
-      }
-      ,
-      err => {
-        console.log("********KO********")
-      }
-    )
-  }
+  // init() {
+
+
+
+  //   this.http.get<User>("http://localhost:8080/exo/personne/" + this.user.mail).subscribe(
+  //     response => {
+  //       console.log("********Utilisateur trouvé!********")
+  //       this.user = response;
+  //     }
+  //     ,
+  //     err => {
+  //       console.log("********KO********")
+
+  //     }
+  //   )
+  // }
 
   confirm() {
-    this.id = JSON.stringify(this.user.mail);
-    sessionStorage.setItem("mel", this.user.mail);
+    sessionStorage.removeItem("usr");
+
+    this.srv.getUser(this.user.mail).subscribe({
+      next: (data) => {
+        this.user = data;
+        sessionStorage.setItem("usr", JSON.stringify(data));
+
+      },
+      error: (err) => { console.log(err) },
+      complete: () => {
+      
+        this.router.navigate(['/updateuserpass/', this.user.mail]);
+      }
+    });
+
+
+
+
   }
+
 
 }
