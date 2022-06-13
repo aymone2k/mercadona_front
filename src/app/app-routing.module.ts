@@ -30,7 +30,7 @@ const routes: Routes = [
    { path: 'createarticle', component: CreatearticleComponent },
    { path: 'deloredit', component: DeloreditarticlesComponent},
    { path: 'findallarticles', component: FindallarticlesComponent },
-   { path: 'findbyidarticle/1', component: FindbyidarticleComponent },
+   { path: 'findbyidarticle/:id', component: FindbyidarticleComponent },
    { path: 'findbystring', component: FindbystringinsideComponent },
    { path: 'orderbypriceasc', component: OrderbypriceascComponent },
    { path: 'orderbypricedesc', component: OrderbypricedescComponent },

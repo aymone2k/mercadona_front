@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from '../model/user';
 
 @Injectable({
@@ -7,7 +8,12 @@ import { User } from '../model/user';
 })
 export class SrvcrudusersService {
 
-  constructor(private http: HttpClient) { }
+
+
+  constructor(private http: HttpClient) {
+
+
+   }
 
   ///////NEW USER////////
 
@@ -67,6 +73,11 @@ let message: string;
     }
   )
 }
+
+//////FINDBY ID/////////
+
+findbyId(mail, mdp): Observable<User>{
+  return this.http.get<User>("http://localhost:8080/exo/personne/"+mail +"/"+mdp)}
 
 
 }
