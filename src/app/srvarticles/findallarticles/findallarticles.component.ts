@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Article } from 'src/app/model/article';
+import { User } from 'src/app/model/user';
+import { SrvcrudusersService } from 'src/app/srvusers/srvcrudusers.service';
 import { ServicearticleService } from '../servicearticle.service';
 
 @Component({
@@ -9,17 +12,19 @@ import { ServicearticleService } from '../servicearticle.service';
   styleUrls: ['./findallarticles.component.css']
 })
 export class FindallarticlesComponent implements OnInit {
-
+  user:User = new User();
   message: string;
   MyList: any;
+  article:Article = new Article();
   id: number;
   infoconnexion: string;
   min: number;
   max: number;
   chaine: string;
+  isAuth:boolean;
 
 
-  constructor(private http: HttpClient, private router: Router, private srvart: ServicearticleService) { }
+  constructor(private http: HttpClient, private router: Router, private srvart: ServicearticleService, private srvUser:  SrvcrudusersService) { }
 
   ngOnInit(): void {
 
@@ -34,6 +39,11 @@ export class FindallarticlesComponent implements OnInit {
       sessionStorage.removeItem("Mylist")
     }
 
+    if(sessionStorage.getItem('user') == null ){
+    this.isAuth = false;
+}else{this.user =JSON.parse(sessionStorage.getItem('user'));
+        this.isAuth = true;
+      }
   }
 
   desc() {
@@ -72,6 +82,26 @@ export class FindallarticlesComponent implements OnInit {
     sessionStorage.removeItem("client");
   }
 
+  findArticle(id) {
+    let art: Article = new Article();
+
+
+         this.srvart.findById(id).subscribe({
+          next: (data) => { this.article = data },
+          error: (err) => { console.log(err) },
+          complete: () => {
+            art.id = this.article.id;
+            art.marque = this.article.marque;
+            art.description = this.article.description;
+            art.prix= this.article.prix;
+            art.url = this.article.url;
+            art.stock = this.article.stock;
+            art.version = this.article.version;
+            let str : string = JSON.stringify(art);
+            sessionStorage.setItem("article", str)
+            this.router.navigate(['/findbyidarticle/'+id]); }
+        })
+      }
 
 
 }
