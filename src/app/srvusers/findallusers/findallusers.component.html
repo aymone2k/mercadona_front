@@ -1,1 +1,40 @@
-<p>findallusers works!</p>
+<h2 class="pl-2 mt-2 text-center" >Liste des utilisateurs</h2>
+<br>
+<br>
+
+<div class="container">
+    <table class="table  table-responsive table-hover text-center">
+        <thead class="table-danger">
+            <td>Mail</td>
+            <td>Mot de passe</td>
+            <td>Nom </td>
+            <td>Prenom</td>
+            <td>Rôle </td>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of MyList">
+                <td>
+                    {{x.mail}}
+                </td>
+
+                <td>
+                    {{x.mdp}}
+                </td>
+
+                <td>
+                    {{x.nom}}
+                </td>
+
+                <td>
+                    {{x.prenom}}
+                </td>
+
+                <td>
+                    {{x.role}}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>

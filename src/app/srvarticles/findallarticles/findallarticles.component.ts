@@ -22,15 +22,15 @@ export class FindallarticlesComponent implements OnInit {
     // let header: HeaderComponent;
     // header.init();
 
-    if (sessionStorage.getItem("client") == null) {
-      this.router.navigate(['/login']);
-      this.message = "Erreur de connexion ! Veuillez vous authentifier !";
-    }
+    // if (sessionStorage.getItem("client") == null) {
+    //   this.router.navigate(['/login']);
+    //   this.message = "Erreur de connexion ! Veuillez vous authentifier !";
+    // }
 
-    else {
-      this.infoconnexion = sessionStorage.getItem("client");
-      this.router.navigate(['/findallarticles']);
-    }
+    // else {
+    //   this.infoconnexion = sessionStorage.getItem("client");
+    //   this.router.navigate(['/findallarticles']);
+    // }
 
     this.http.get("http://localhost:8080/exo/articlerest").subscribe(
       response => {

@@ -28,6 +28,10 @@ import { FindbyiduserComponent } from './srvusers/findbyiduser/findbyiduser.comp
 import { FindbynameComponent } from './srvusers/findbyname/findbyname.component';
 import { FindallplacedordersComponent } from './srvusers/findallplacedorders/findallplacedorders.component';
 import { BillComponent } from './srvusers/bill/bill.component';
+import { UpdatepassComponent } from './srvusers/updatepass/updatepass.component';
+import { UpdateuserpassComponent } from './srvusers/updateuserpass/updateuserpass.component';
+import { PurchaseproductComponent } from './srvarticles/purchaseproduct/purchaseproduct.component';
+import { CartComponent } from './order/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import { BillComponent } from './srvusers/bill/bill.component';
     FindbyiduserComponent,
     FindbynameComponent,
     FindallplacedordersComponent,
-    BillComponent
+    BillComponent,
+    UpdatepassComponent,
+    UpdateuserpassComponent,
+    PurchaseproductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

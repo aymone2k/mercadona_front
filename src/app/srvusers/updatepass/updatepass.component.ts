@@ -5,13 +5,13 @@ import { User } from 'src/app/model/user';
 import { SrvcrudusersService } from '../srvcrudusers.service';
 
 @Component({
-  selector: 'app-updateuser',
-  templateUrl: './updateuser.component.html',
-  styleUrls: ['./updateuser.component.css']
+  selector: 'app-updatepass',
+  templateUrl: './updatepass.component.html',
+  styleUrls: ['./updatepass.component.css']
 })
-export class UpdateuserComponent implements OnInit {
+export class UpdatepassComponent implements OnInit {
 
-  id:string;
+  id: string;
   user: User = new User();
   message: string;
 
@@ -20,15 +20,14 @@ export class UpdateuserComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.params.subscribe(params => {
-      this.id = params['id'];
+      this.user.mail = params['id'];
     })
 
     this.init();
   }
 
-  init()
-  {
-    this.http.get<User>("http://localhost:8080/exo/personne/" + this.id).subscribe(
+  init() {
+    this.http.get<User>("http://localhost:8080/exo/personne/" + this.user.mail).subscribe(
       response => {
         console.log("********Utilisateur trouvé!********")
         this.user = response;
@@ -39,12 +38,10 @@ export class UpdateuserComponent implements OnInit {
       }
     )
   }
-  
 
-  update(){
-    this.srv.update(this.user);
-    this.message = sessionStorage.getItem("msg");
-    this.init();
-
+  confirm() {
+    this.id = JSON.stringify(this.user.mail);
+    sessionStorage.setItem("mel", this.user.mail);
   }
+
 }

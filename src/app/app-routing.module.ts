@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CartComponent } from './order/cart/cart.component';
 import { HomeComponent } from './shared/home/home.component';
 import { AddtocartComponent } from './srvarticles/addtocart/addtocart.component';
 import { CreatearticleComponent } from './srvarticles/createarticle/createarticle.component';
@@ -20,6 +21,7 @@ import { FindbyiduserComponent } from './srvusers/findbyiduser/findbyiduser.comp
 import { FindbynameComponent } from './srvusers/findbyname/findbyname.component';
 import { LoginComponent } from './srvusers/login/login.component';
 import { SubscribeComponent } from './srvusers/subscribe/subscribe.component';
+import { UpdatepassComponent } from './srvusers/updatepass/updatepass.component';
 import { UpdateuserComponent } from './srvusers/updateuser/updateuser.component';
 
 const routes: Routes = [
@@ -28,7 +30,7 @@ const routes: Routes = [
    { path: 'createarticle', component: CreatearticleComponent },
    { path: 'deloredit', component: DeloreditarticlesComponent},
    { path: 'findallarticles', component: FindallarticlesComponent },
-   { path: 'findbyidarticle', component: FindbyidarticleComponent },
+   { path: 'findbyidarticle/1', component: FindbyidarticleComponent },
    { path: 'findbystring', component: FindbystringinsideComponent },
    { path: 'orderbypriceasc', component: OrderbypriceascComponent },
    { path: 'orderbypricedesc', component: OrderbypricedescComponent },
@@ -38,12 +40,14 @@ const routes: Routes = [
    { path: 'deleteuser', component: DeleteuserComponent },
    { path: 'findallorders', component: FindallplacedordersComponent },
    { path: 'findallusers', component: FindallusersComponent },
-   { path: 'findbyiduser', component: FindbyiduserComponent },
+   { path: 'findbyiduser/:id', component: FindbyiduserComponent },
    { path: 'findbyname', component: FindbynameComponent },
    { path: 'login', component: LoginComponent },
    { path: 'subscribe', component: SubscribeComponent },
-   { path: 'updateuser', component: UpdateuserComponent },
-   { path: 'bill', component: BillComponent }
+   { path: 'updateuser/:id', component: UpdateuserComponent },
+   { path: 'bill', component: BillComponent },
+   { path: 'updatepass', component: UpdatepassComponent},
+   { path: 'cart', component: CartComponent}
 ];
 
 @NgModule({
