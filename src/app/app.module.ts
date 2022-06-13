@@ -32,6 +32,7 @@ import { UpdatepassComponent } from './srvusers/updatepass/updatepass.component'
 import { UpdateuserpassComponent } from './srvusers/updateuserpass/updateuserpass.component';
 import { PurchaseproductComponent } from './srvarticles/purchaseproduct/purchaseproduct.component';
 import { CartComponent } from './order/cart/cart.component';
+import { PagecartComponent } from './order/pagecart/pagecart.component'
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { CartComponent } from './order/cart/cart.component';
     UpdatepassComponent,
     UpdateuserpassComponent,
     PurchaseproductComponent,
-    CartComponent
+    CartComponent,
+    PagecartComponent
   ],
   imports: [
     BrowserModule,

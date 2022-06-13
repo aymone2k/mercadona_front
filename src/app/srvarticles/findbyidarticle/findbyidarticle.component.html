@@ -1,5 +1,37 @@
 <p>findbyidarticle works!</p>
 
-<div class="container w-100">
-    <img src="/assets/images/exemple-details-produit.PNG" alt="">
+
+<div class="container w-200">
+  <div class="card" style="width: 18rem;">
+    <img src="{{article.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{article.marque}}</h5>
+      <p class="card-text">{{article.description}}</p>
+      <p class="card-text">{{article.prix}} €</p>
+    </div>
+
+
+
+    <div class="card-body">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="moins()">-</button>
+        <button type="button" class="btn btn-outline-secondary">{{nbre}}</button>
+
+        <button type="button" class="btn btn-secondary" (click)="plus()">+</button>
+      </div>
+
+<div *ngIf="stock">
+  <button type="button" class="btn btn-success" (click)="addCart()">ajouter</button>
+  <p >{{article.stock}} articles en stock</p>
+</div>
+<div *ngIf="!stock">
+  <button type="button" class="btn btn-success" (click)="addCart()"  disabled >ajouter</button>
+  <p >En rupture de stock</p>
+</div>
+
+
+
+
+    </div>
+  </div>
 </div>

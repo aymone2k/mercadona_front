@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Article } from 'src/app/model/article';
 import { ServicearticleService } from '../servicearticle.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class FindallarticlesComponent implements OnInit {
 
   message: string;
   MyList: any;
+  article:Article = new Article();
   id: number;
   infoconnexion: string;
   min: number;
@@ -72,6 +74,26 @@ export class FindallarticlesComponent implements OnInit {
     sessionStorage.removeItem("client");
   }
 
+  findArticle(id) {
+let art: Article = new Article();
+
+
+     this.srvart.findById(id).subscribe({
+      next: (data) => { this.article = data },
+      error: (err) => { console.log(err) },
+      complete: () => {
+        art.id = this.article.id;
+        art.marque = this.article.marque;
+        art.description = this.article.description;
+        art.prix= this.article.prix;
+        art.url = this.article.url;
+        art.stock = this.article.stock;
+        art.version = this.article.version;
+        let str : string = JSON.stringify(art);
+        sessionStorage.setItem("article", str)
+        this.router.navigate(['/findbyidarticle/'+id]); }
+    })
+  }
 
 
 }

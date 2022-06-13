@@ -11,6 +11,12 @@ export class SrvcrudusersService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+
+  constructor(private http: HttpClient) {
+
+
+   }
+
   ///////NEW USER////////
 
   create(data) {
@@ -70,6 +76,7 @@ export class SrvcrudusersService {
 
   getUser(id): Observable<User> {
 
+//////FINDBY ID/////////
 
     return this.http.get<User>("http://localhost:8080/exo/personne/" + id)
   }
@@ -89,5 +96,9 @@ export class SrvcrudusersService {
   //     // sessionStorage.setItem("msgnewuser", "Adresse mail non trouvée, veuillez créer un compte!");
   //   }
   // )
+
+findbyId(mail, mdp): Observable<User>{
+  return this.http.get<User>("http://localhost:8080/exo/personne/"+mail +"/"+mdp)}
+
 
 }
