@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SrvcartService } from '../srvcart.service';
 
 @Component({
   selector: 'app-addtocart',
@@ -6,16 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addtocart.component.css']
 })
 export class AddtocartComponent implements OnInit {
-  ligne:string;
-  ligne2:string;
-    constructor() { }
+
+    constructor( private router: Router, private srvCart: SrvcartService) { }
 
     ngOnInit(): void {
-     this.ligne = sessionStorage.getItem("ligne");
-    this.ligne2 =  localStorage.getItem("ligne");
 
-    console.log(this.ligne)
-    console.log(this.ligne2)
+
     }
 
 }

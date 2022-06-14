@@ -20,17 +20,13 @@
       </div>
 
 <div *ngIf="stock">
-  <button type="button" class="btn btn-success" (click)="addCart()">ajouter</button>
+  <button type="button" class="btn btn-success" (click)="addCart(article)">ajouter</button>
   <p >{{article.stock}} articles en stock</p>
 </div>
 <div *ngIf="!stock">
-  <button type="button" class="btn btn-success" (click)="addCart()"  disabled >ajouter</button>
+  <button type="button" class="btn btn-success" (click)="addCart(article)"  disabled >ajouter</button>
   <p >En rupture de stock</p>
 </div>
-
-
-
-
     </div>
   </div>
 </div>

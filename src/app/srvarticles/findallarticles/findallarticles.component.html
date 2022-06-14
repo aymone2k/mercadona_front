@@ -10,9 +10,9 @@
 <div class="row row-cols-1 row-cols-md-5">
     <div *ngFor="let x of MyList; let index = index;" class="text-black">
 
-        <div class="column"(click)="findArticle(x.id)">
+        <div class="column">
             <div class="card">
-                <div class="row-md-3 mb-2" >
+                <div class="row-md-3 mb-2" (click)="findArticle(x.id)" >
 
                         <img src="{{x.url}}" style="width:100%">
 
@@ -24,6 +24,17 @@
 
 
                 </div>
+                <div class="card-body">
+
+
+            <div *ngIf="stock">
+              <button type="button" class="btn btn-success" (click)="addCart(x)">ajouter</button>
+              <p >{{article.stock}} articles en stock</p>
+            </div>
+            <div *ngIf="!stock">
+              <button type="button" class="btn btn-success" (click)="addCart(x)"  disabled >ajouter</button>
+              <p >En rupture de stock</p>
+            </div>
             </div>
         </div>
 

@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/article';
+import { Line } from 'src/app/model/line';
 import { User } from 'src/app/model/user';
 import { SrvcrudusersService } from 'src/app/srvusers/srvcrudusers.service';
 import { ServicearticleService } from '../servicearticle.service';
+import { SrvcartService } from '../srvcart.service';
 
 @Component({
   selector: 'app-findallarticles',
@@ -16,6 +18,9 @@ export class FindallarticlesComponent implements OnInit {
   message: string;
   MyList: any;
   article:Article = new Article();
+  stock:boolean = true;
+  nbre: number =1;
+  lignes: Array<Line> = new Array<Line>();
   id: number;
   infoconnexion: string;
   min: number;
@@ -24,7 +29,7 @@ export class FindallarticlesComponent implements OnInit {
   isAuth:boolean;
 
 
-  constructor(private http: HttpClient, private router: Router, private srvart: ServicearticleService, private srvUser:  SrvcrudusersService) { }
+  constructor(private http: HttpClient, private router: Router, private srvart: ServicearticleService, private srvUser:  SrvcrudusersService, private srvCart: SrvcartService) { }
 
   ngOnInit(): void {
 
@@ -103,5 +108,20 @@ export class FindallarticlesComponent implements OnInit {
         })
       }
 
+      addCart(article){
 
+        this.srvCart.addArticleToCart(article, this.nbre);
+
+        console.log(this.srvCart.cart)
+
+
+        }
+        // plus(id){
+        //   this.nbre+=1;
+        //   }
+        //   moins(id){
+        //     if(this.nbre>1){
+        //       this.nbre-=1;
+        //     }
+        //   }
 }

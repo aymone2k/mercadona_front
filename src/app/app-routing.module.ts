@@ -20,6 +20,7 @@ import { FindallusersComponent } from './srvusers/findallusers/findallusers.comp
 import { FindbyiduserComponent } from './srvusers/findbyiduser/findbyiduser.component';
 import { FindbynameComponent } from './srvusers/findbyname/findbyname.component';
 import { LoginComponent } from './srvusers/login/login.component';
+import { ProfilComponent } from './srvusers/profil/profil.component';
 import { SubscribeComponent } from './srvusers/subscribe/subscribe.component';
 import { UpdatepassComponent } from './srvusers/updatepass/updatepass.component';
 import { UpdateuserComponent } from './srvusers/updateuser/updateuser.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
    { path: 'createarticle', component: CreatearticleComponent },
    { path: 'deloredit', component: DeloreditarticlesComponent},
    { path: 'findallarticles', component: FindallarticlesComponent },
-   { path: 'findbyidarticle/1', component: FindbyidarticleComponent },
+   { path: 'findbyidarticle/:id', component: FindbyidarticleComponent },
    { path: 'findbystring', component: FindbystringinsideComponent },
    { path: 'orderbypriceasc', component: OrderbypriceascComponent },
    { path: 'orderbypricedesc', component: OrderbypricedescComponent },
@@ -49,7 +50,8 @@ const routes: Routes = [
    { path: 'bill', component: BillComponent },
    { path: 'updatepass', component: UpdatepassComponent},
    { path: 'updateuserpass/:id', component: UpdateuserpassComponent},
-   { path: 'cart', component: CartComponent}
+   { path: 'cart', component: CartComponent},
+   { path: 'profil/:id', component: ProfilComponent}
 ];
 
 @NgModule({
