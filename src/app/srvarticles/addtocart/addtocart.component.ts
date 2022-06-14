@@ -6,16 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addtocart.component.css']
 })
 export class AddtocartComponent implements OnInit {
-ligne:string;
-ligne2:string;
-  constructor() { }
+  ligne:string;
+  ligne2:string;
+    constructor() { }
 
-  ngOnInit(): void {
-   this.ligne = sessionStorage.getItem("ligne");
-  this.ligne2 =  localStorage.getItem("ligne");
+    ngOnInit(): void {
+     this.ligne = sessionStorage.getItem("ligne");
+    this.ligne2 =  localStorage.getItem("ligne");
 
-  console.log(this.ligne)
-  console.log(this.ligne2)
-  }
+    console.log(this.ligne)
+    console.log(this.ligne2)
+    }
 
 }
