@@ -24,6 +24,7 @@ import { SubscribeComponent } from './srvusers/subscribe/subscribe.component';
 import { UpdatepassComponent } from './srvusers/updatepass/updatepass.component';
 import { UpdateuserComponent } from './srvusers/updateuser/updateuser.component';
 import { UpdateuserpassComponent } from './srvusers/updateuserpass/updateuserpass.component';
+import { TestcommandeComponent } from './testcommande/testcommande.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -49,7 +50,8 @@ const routes: Routes = [
    { path: 'bill', component: BillComponent },
    { path: 'updatepass', component: UpdatepassComponent},
    { path: 'updateuserpass/:id', component: UpdateuserpassComponent},
-   { path: 'cart', component: CartComponent}
+   { path: 'cart', component: CartComponent},
+   {path: 'test', component: TestcommandeComponent}
 ];
 
 @NgModule({

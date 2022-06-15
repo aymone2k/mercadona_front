@@ -6,7 +6,7 @@ export class User {
     role: string;
     version: number;
 
-    constructor() {
+    constructor() { 
       
     }
 }
