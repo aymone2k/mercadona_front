@@ -21,8 +21,8 @@ export class ServicecommandeService {
     return this.http.get<Commande>(this.url+"/"+id)
   }
 
-  getUserLastCommande(id: string): Observable<string>{
-    return this.http.get(this.url+"/getUserLastCartString/"+id, {responseType : 'text'})
+  getUserLastCommande(id: string): Observable<Commande>{
+    return this.http.get<Commande>(this.url+"/getCoByUserId/"+id)
   }
 
   findUserCommande(id: string): Observable<Array<User>>{

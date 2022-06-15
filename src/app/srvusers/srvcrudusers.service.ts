@@ -103,6 +103,7 @@ export class SrvcrudusersService {
             this.isAuth$.next(true);
             this.infoUser = this.user.prenom + " " + this.user.nom;
               sessionStorage.setItem('user', this.infoUser);
+              sessionStorage.setItem('usr',JSON.stringify(this.user))
             this.router.navigate(['/findallarticles']);
           } else {
             this.message = "erreur de mail ou de mot de passe"
