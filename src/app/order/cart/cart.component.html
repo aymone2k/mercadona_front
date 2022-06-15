@@ -1,5 +1,10 @@
-<p>cart works!</p>
-
-<div class="container w-100">
-    <img src="/assets/images/exemple-panier.PNG" alt="">
-</div>
+<tr  *ngFor="let item of liste">
+    <td>
+     article: {{item.article.marque}}
+    
+     quantité: <input value="{{item.quantite}}">
+    <p>prix total: {{item.prixLigne}}</p>
+    <p>prix unitaire: {{item.article.prix}}</p>
+    </td>
+    
+     </tr>

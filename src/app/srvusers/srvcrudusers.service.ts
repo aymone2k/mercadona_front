@@ -2,20 +2,26 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SrvcrudusersService {
+  isAuth$ = new BehaviorSubject<boolean>(false);//observable qui nous permet de savoir si utilisateur est connecté ou pas
+  user: User = new User();
+  message: string;
+  infoUser: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
 
+    console.log(sessionStorage.getItem('user'));
+    //const data = JSON.parse(sessionStorage.getItem('user'));
 
-  constructor(private http: HttpClient) {
-
-
-   }
+    if (sessionStorage.getItem('user')!=null) {
+      this.isAuth$.next(true);
+    }
+  }
 
   ///////NEW USER////////
 
@@ -51,9 +57,7 @@ export class SrvcrudusersService {
 
     );
 
-  }
-
-  ///////UPDATE//////
+  }///////UPDATE//////
   update(data) {
     const body = JSON.stringify(data);
     let message: string;
@@ -76,29 +80,42 @@ export class SrvcrudusersService {
 
   getUser(id): Observable<User> {
 
-//////FINDBY ID/////////
 
     return this.http.get<User>("http://localhost:8080/exo/personne/" + id)
   }
 
-  
 
-  // .subscribe(
-  //   response => {
-  //     console.log("********Utilisateur trouvé!********")
-  //     sessionStorage.setItem("usr", JSON.stringify(response));
-  //   }
+  findbyId(mail, mdp): Observable<User> {
+    return this.http.get<User>("http://localhost:8080/exo/personne/" + mail + "/" + mdp)
+  }
 
-  //   ,
-  //   err => {
-  //     console.log("***********Nouvel utilisateur!**********");
-  //     // this.router.navigate((['/subscribe']));
-  //     // sessionStorage.setItem("msgnewuser", "Adresse mail non trouvée, veuillez créer un compte!");
-  //   }
-  // )
 
-findbyId(mail, mdp): Observable<User>{
-  return this.http.get<User>("http://localhost:8080/exo/personne/"+mail +"/"+mdp)}
 
+  //connection d'un user: signin
+
+  getUserToServer(mail, mdp) {
+    return new Promise((resolve, reject) => {
+      this.http.get("http://localhost:8080/exo/personne/" + mail + "/" + mdp).subscribe(
+        (authData: User) => {
+          this.user = authData;
+          console.log(this.user)
+          if (this.user !== null) {
+            this.isAuth$.next(true);
+            this.infoUser = this.user.prenom + " " + this.user.nom;
+              sessionStorage.setItem('user', this.infoUser);
+            this.router.navigate(['/findallarticles']);
+          } else {
+            this.message = "erreur de mail ou de mot de passe"
+            this.router.navigate(['/login'])
+          }
+          resolve(true);
+        },
+        (error) => {
+          console.log(error)
+          reject(error)
+        })
+    })
+
+  }
 
 }

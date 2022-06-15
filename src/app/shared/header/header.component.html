@@ -41,13 +41,13 @@
         <button id="s1" class="btn btn-outline-dark" type="button" routerLink="/findbystring" (click)='search()'>Chercher</button>
 
       </form>
-      <a href="/#!">
+      <a routerLink="/#!">
         <img src="/assets/images/contact2.jpg" class="img-fluid rounded w-25" />
       </a>
-      <a href="/cart">
+      <a routerLink="/addtocart">
         <img src="/assets/images/cart2.jpg" class="img-fluid rounded w-25" />
       </a>
-      <a href="/login">
+      <a routerLink="/login">
         <img src="/assets/images/compte2.jpg" class="img-fluid rounded w-25" />
       </a>
     </div>
@@ -89,8 +89,8 @@
 
       </ul>
       <form class="d-flex w-auto">
-        <button class="info"><strong>{{infoconnexion}}</strong></button>
-        <button (click)="deconnex()" routerLink="/login" class="btn btn-outline-danger">DECONNEXION</button>
+        <button class="info" routerLink="/cart"><strong>{{infoconnexion}}</strong></button>
+        <button (click)="deconnex()" routerLink="/findallarticles" class="btn btn-outline-danger">DECONNEXION</button>
       </form>
     </div>
   </nav>

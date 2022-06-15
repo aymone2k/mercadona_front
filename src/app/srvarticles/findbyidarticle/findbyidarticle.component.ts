@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ConnectableObservable } from 'rxjs';
 import { Article } from 'src/app/model/article';
 import { Line } from 'src/app/model/line';
+import { SrvcartService } from '../srvcart.service';
 
 @Component({
   selector: 'app-findbyidarticle',
@@ -11,44 +12,50 @@ import { Line } from 'src/app/model/line';
 })
 export class FindbyidarticleComponent implements OnInit {
 
-  article: Article= new Article();
-  stock:boolean = true;
-  nbre: number =1;
+  article: Article = new Article();
+  stock: boolean = true;
+  nbre: number = 1;
   lignes: Array<Line> = new Array<Line>();
 
-  constructor( private router: Router) {}
+  // pour gérer la promo
+  ispromo: boolean = false;
+  prixpromo: string;
+
+  constructor(private router: Router, private srvCart: SrvcartService) { }
 
   ngOnInit(): void {
-    sessionStorage.getItem("article");
-  this.article= JSON.parse(sessionStorage.getItem("article"))
-if(this.article.stock<=0){
-  this.stock=false;
-}
+    this.srvCart.getCart();
+ 
+    this.article = JSON.parse(sessionStorage.getItem("article"))
+    if (this.article.stock <= 0) {
+      this.stock = false;
+    }
+
+    // Application de la promotion sur la marque Good Goût -15%
+    if (this.article.marque === "Good Goût") {
+      this.ispromo = true;
+      this.prixpromo = (this.article.prix * 0.85).toFixed(2);
+    }
+    
   }
 
-addCart(){
-  let line: Line = new Line();
-  line.quantite = this.nbre;
-  line.article = this.article;
-  line.getPrix();
-   this.lignes.push(line);
-  console.log(this.lignes)
-  if(sessionStorage.getItem("user") === null){
-    localStorage.setItem("ligne",JSON.stringify(this.lignes));
-  }else{
-  sessionStorage.setItem("ligne",JSON.stringify(this.lignes));}
+  addCart(article) {
+    
+    console.log(this.nbre)
+    this.srvCart.addArticleToCart(article, this.nbre);
+ 
+    console.log(this.srvCart.cart);
 
-this.router.navigate(['/addtocart'])
-  //ajouter au panier;
-
-}
-plus(){
-this.nbre+=1;
-}
-moins(){
-  if(this.nbre>1){
-    this.nbre-=1;
   }
-}
+
+  plus() {
+    this.nbre += 1;
+  }
+
+  moins() {
+    if (this.nbre > 1) {
+      this.nbre -= 1;
+    }
+  }
 
 }

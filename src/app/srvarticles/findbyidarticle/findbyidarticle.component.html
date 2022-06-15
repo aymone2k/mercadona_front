@@ -1,7 +1,165 @@
-<p>findbyidarticle works!</p>
+<!--Main layout-->
+<div class="position-relative">
+  <div class="position-absolute top-25 start-0 ">
+    <a routerLink="/findallarticles"> Liste des produits </a>
+  </div>
+
+  <div class="position-absolute top-25 end-0 ">
+    <a routerLink="/addtocart"> Mon panier </a>
+  </div>
+
+</div>
+<main class="mt-5 pt-4">
+  <div class="container dark-grey-text mt-5">
+
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <img src="{{article.url}}" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Content-->
+        <div class="p-4">
+          <h3 class="text-success"><strong>{{article.marque}}</strong></h3>
+          <br>
+          <h3 class="lead font-weight-bold">Description</h3>
+          <br>
+          <h4>{{article.description}}</h4>
 
 
-<div class="container w-200">
+
+          <p *ngIf="ispromo" class="lead">
+            <span class="mr-1 text-danger">
+              <strong><del>{{article.prix}}€ </del></strong>
+            </span>
+            <strong><span>{{prixpromo}}€</span></strong>
+          </p>
+
+          <p *ngIf="!ispromo" class="lead">
+
+            <strong><span>{{article.prix}}€</span></strong>
+          </p>
+          <br><br>
+          <div *ngIf="ispromo" class="mb-3">
+            <a href="">
+              <span class="badge text-danger">-15%</span>
+            </a>
+            <a href="">
+              <span class="badge mr-1 text-warning">New</span>
+            </a>
+            <a href="">
+              <span class="badge mr-1 text-primary">Bestseller</span>
+            </a>
+          </div>
+
+          <div *ngIf="!ispromo" class="mb-2">
+            <a href="">
+              <span class="badge mr-1 text-danger">New</span>
+            </a>
+            <a href="">
+              <span class="badge mr-1 text-primary">Bestseller</span>
+            </a>
+          </div>
+
+          <form class="d-flex justify-content-left">
+            <!-- Default input -->
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-success" (click)="moins()">-</button>
+              <button type="button" class="btn btn-black">{{nbre}}</button>
+
+              <button type="button" class="btn btn-success" (click)="plus()">+</button>
+            </div>
+            <!-- <button class="btn btn-primary btn-md my-0 p" type="submit">Ajouter au panier
+              <img src="\assets\images\cart2.jpg" class="w-25">
+            </button> -->
+
+            <div *ngIf="stock">
+              <button type="button" class="btn btn-primary" (click)="addCart(article)">Ajouter au panier </button>
+              <!-- <div>{{article.stock}} articles en stock</div> -->
+            </div>
+            <div *ngIf="!stock">
+              <button type="button" class="btn btn-primary" (click)="addCart(article)" disabled>Ajouter au panier </button>
+              <p class="text-center text-danger">En rupture de stock</p>
+            </div>
+          </form>
+
+        </div>
+        <!--Content-->
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+    <hr>
+
+    <!--Grid row-->
+    <div class="row d-flex justify-content-center wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-6 text-center">
+
+        <h4 class="my-4 h4">Information supplémentaire</h4>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+          voluptates,
+          quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4">
+
+        <img src="\assets\images\affiche1.jpg" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4">
+
+        <img src="\assets\images\affiche2.jpg" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 mb-4">
+
+        <img src="\assets\images\affiche3.jpg" class="img-fluid" alt="">
+
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+  </div>
+</main>
+<!--Main layout-->
+
+
+
+
+
+<!-- <div class="container w-200">
   <div class="card" style="width: 18rem;">
     <img src="{{article.url}}" class="card-img-top" alt="...">
     <div class="card-body">
@@ -9,8 +167,6 @@
       <p class="card-text">{{article.description}}</p>
       <p class="card-text">{{article.prix}} €</p>
     </div>
-
-
 
     <div class="card-body">
       <div class="btn-group" role="group" aria-label="Basic example">
@@ -20,18 +176,18 @@
         <button type="button" class="btn btn-secondary" (click)="plus()">+</button>
       </div>
 
-<div *ngIf="stock">
-  <button type="button" class="btn btn-success" (click)="addCart()">ajouter</button>
-  <p >{{article.stock}} articles en stock</p>
-</div>
-<div *ngIf="!stock">
-  <button type="button" class="btn btn-success" (click)="addCart()"  disabled >ajouter</button>
-  <p >En rupture de stock</p>
-</div>
+      <div *ngIf="stock">
+        <button type="button" class="btn btn-success" (click)="addCart()">ajouter</button>
+        <p>{{article.stock}} articles en stock</p>
+      </div>
+      <div *ngIf="!stock">
+        <button type="button" class="btn btn-success" (click)="addCart()" disabled>ajouter</button>
+        <p>En rupture de stock</p>
+      </div>
 
 
 
 
     </div>
   </div>
-</div>
+</div> -->

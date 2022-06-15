@@ -23,13 +23,14 @@ export class HeaderComponent implements OnInit {
   }
 
   init() {
-    if (sessionStorage.getItem("client") != null) {
-      this.infoconnexion = sessionStorage.getItem("client");
+    if (sessionStorage.getItem("user") != null) {
+      this.infoconnexion = sessionStorage.getItem("user");
     }
   }
   deconnex() {
     // this.init();
-    sessionStorage.removeItem("client");
+    sessionStorage.removeItem("user");
+    localStorage.removeItem("cart");
   }
 
   search() {
@@ -37,7 +38,7 @@ export class HeaderComponent implements OnInit {
       next: (data) => { sessionStorage.setItem("Mylist", JSON.stringify(data)) },
       error: (err) => { console.log(err) },
       complete: () => {
-        this.router.navigate(['/findallarticles'])
+        this.router.navigate(['/findallarticles']);
       }
     })
   }
