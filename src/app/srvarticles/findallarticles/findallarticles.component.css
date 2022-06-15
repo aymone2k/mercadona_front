@@ -14,7 +14,7 @@
   
   /* Create three equal columns that sits next to each other */
   .column {
-    flex: 20%;
+    flex: 16.66%;
     padding: 5px;
   }
 
@@ -26,5 +26,10 @@
     box-shadow: 0 2px 2px 0;
     padding: 10px;
     text-align: center;
-    background-color: #f3eadd;
+    background-color: #fcd0e1;
+  }
+
+  #title {
+    font-family: fantasy;
+    background-color: #fcd0e1;
   }

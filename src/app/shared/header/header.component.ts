@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   infoconnexion: string;
   str: string;
-
+  isAuth: boolean = false;
   constructor(private srv: ServicearticleService, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
   init() {
     if (sessionStorage.getItem("user") != null) {
       this.infoconnexion = sessionStorage.getItem("user");
+      this.isAuth = true;
     }
   }
   deconnex() {

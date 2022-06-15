@@ -27,9 +27,9 @@
   <div class="p-5 text-center position-relative" style="background-color: white;">
 
     <!-- LE LOGO -->
-    <div class="position-absolute top-50 start-40 translate-middle-y">
+    <div class="position-absolute top-50 start-0 translate-middle-y">
       <a href="/home">
-        <img src="/assets/images/logo11.PNG" class="img-fluid rounded w-50" />
+        <img src="/assets/images/logo4.PNG" class="img-fluid rounded w-50" />
       </a>
     </div>
 
@@ -42,13 +42,16 @@
 
       </form>
       <a routerLink="/#!">
-        <img src="/assets/images/contact2.jpg" class="img-fluid rounded w-25" />
+        <img src="/assets/images/contact3.jpg" class="img-fluid rounded w-25" />
       </a>
       <a routerLink="/addtocart">
-        <img src="/assets/images/cart2.jpg" class="img-fluid rounded w-25" />
+        <img src="/assets/images/cart3.jpg" class="img-fluid rounded w-25" />
       </a>
-      <a routerLink="/login">
-        <img src="/assets/images/compte2.jpg" class="img-fluid rounded w-25" />
+      <a  *ngIf = "isAuth" routerLink="/updateuser/">
+        <img src="/assets/images/compte3.jpg" class="img-fluid rounded w-25" />
+      </a>
+      <a  *ngIf = "!isAuth" routerLink="/login">
+        <img src="/assets/images/compte3.jpg" class="img-fluid rounded w-25" />
       </a>
     </div>
     >
@@ -73,19 +76,24 @@
 
   </div>
   <nav class="navbar navbar-expand-sm"
-    style="background-color: #f3eadd; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ">
+    style="background-color: #0a999e; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ">
     <div class="container-fluid">
       <ul class="navbar-nav">
         <!-- <li class="nav-item">
           <a class="nav-link active link-dark" href="/home">Mam'Mam</a>
         </li> -->
-
         <li class="nav-item">
-          <a class="nav-link link-dark" href="/findallarticles">Nos produits</a>
+          <h4> <a class="nav-link link-dark" href="/home">Accueil|</a></h4>
         </li>
         <li class="nav-item">
-          <a class="nav-link link-dark" href="/login">Login</a>
+          <h4> <a class="nav-link link-dark" href="/findallarticles">Tous nos produits|</a></h4>
         </li>
+        <li class="nav-item">
+        <h4><a class="nav-link link-dark" href="/login"> Passer une commande| </a></h4>
+        </li>
+        <li class="nav-item">
+          <h4><a class="nav-link link-dark" href="/subscribe">Inscription| </a></h4>
+          </li>
 
       </ul>
       <form class="d-flex w-auto">

@@ -1,12 +1,29 @@
-<div class='mx-auto w-75'>
-    <button (click)='asc()'>Prix ASC</button>
-    <button (click)='desc()'>Prix DESC</button>
-    <button (click)='masc()'>Marque ASC</button>
+<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" id="title">TOUS NOS PRODUITS EN VENTE SUR LE SITE:</p>
+
+
+<div class='container mt-3'>
+    <p class=" h4  mb-5 mx-1 mx-md-4 mt-4"> <u>Filtrer par:</u> </p>
+    <div class=" h5 form-check">
+        <input type="checkbox" (click)='asc()'>Prix croissant
+    </div>
+    <div class=" h5 form-check"><input type="checkbox" (click)='desc()'>Prix décroissant</div>
+    <div class=" h5 form-check"> <input type="checkbox" (click)='masc()'>Marque</div>
+    <br>
+    <div class=" h5 form-group">
+        Min : <input type="number" min=0 [(ngModel)]='min'>
+        Max : <input type="number" min=0 [(ngModel)]='max'>
+        <button  class="btn btn-info" (click)="prixbetween()">Filtrer</button>
+    </div>
+</div>
+<!-- <div class='mx-auto w-75'>
+    <button class="btn btn-primary"   (click)='asc()'>Prix croissant</button><br>
+    <button (click)='desc()'>Prix décroissant</button><br>
+    <button (click)='masc()'>Marque</button><br>
     Min : <input [(ngModel)]='min'>
     Max : <input [(ngModel)]='max'>
-    <button (click)="prixbetween()">chercher par prix</button>
-</div>
-<div class="row row-cols-1 row-cols-md-5">
+    <button (click)="prixbetween()">Filtrer par prix</button>
+</div> -->
+<div class="row row-cols-1 row-cols-md-6">
     <div *ngFor="let x of MyList; let index = index;" class="text-black">
 
         <div class="column">
@@ -38,8 +55,8 @@
 
 
                     <div *ngIf="stock">
-                        <button type="button" class="btn btn-success" (click)="addCart(x)">ajouter</button>
-                        <p>{{article.stock}} articles en stock</p>
+                        <button type="button" class="btn btn-dark" (click)="addCart(x)">Acheter</button>
+                        <!-- <p>{{article.stock}} articles en stock</p> -->
                     </div>
                     <div *ngIf="!stock">
                         <button type="button" class="btn btn-success" (click)="addCart(x)" disabled>ajouter</button>

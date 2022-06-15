@@ -3,14 +3,14 @@
 }
 
 .search-container button:hover {
-    background:  #f3eadd;
+    background:  #0a999e;
     width: 50;
     object-position: center;
   }
 
   #s1{
     border-radius: 20px;
-    border-color: #f3eadd;
+    border-color: #0a999e;
     border-block-width: 6px;
 
 }

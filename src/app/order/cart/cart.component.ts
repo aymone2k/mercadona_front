@@ -12,21 +12,24 @@ import { SrvcartService } from 'src/app/srvarticles/srvcart.service';
 })
 
 export class CartComponent implements OnInit {
-  cart: Cart;
-  user: User = new User();
-  liste: Array<Line> = new Array<Line>();
-  totalquantity: number;
-  totalcost: number;
+  client: string;
+  MyList: Array<Line>=[];
+  panier: Cart = new Cart();
+  total: string;
 
   constructor(private router: Router, private srvCart: SrvcartService) { }
 
   ngOnInit(): void {
-    
-    this.cart = this.srvCart.getCart();
-    this.liste = this.srvCart.cart.liste;
-    this.totalquantity = this.srvCart.cart.totalquantity;
-    this.totalcost = this.srvCart.cart.totalcost;
+    this.client = sessionStorage.getItem("user");
+    this.MyList = this.srvCart.getCart().liste;
+    this.panier = this.srvCart.getCart();
+   this.total = this.panier.totalcost.toFixed(2);
+  }
 
+  deconnex() {
+    // this.init();
+    sessionStorage.removeItem("user");
+    localStorage.removeItem("cart");
   }
 
 }

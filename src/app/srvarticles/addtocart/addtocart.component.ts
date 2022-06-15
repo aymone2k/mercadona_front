@@ -64,8 +64,17 @@ export class AddtocartComponent implements OnInit {
     localStorage.removeItem("cart");
   }
 
-  supprimer() {
-
+  supprimer(line,index) {
+     console.log("avant " + localStorage.getItem("cart"));
+    // console.log("position :" + index)
+    this.cart.liste = this.cart.liste.splice(index, 1);
+    this.cart.totalcost = Number((this.cart.totalcost - line.article.prix * line.quantite).toFixed(2));
+    this.cart.totalquantity -= line.quantite;
+    this.totalcost = this.cart.totalcost;
+    localStorage.setItem("cart", JSON.stringify(this.cart));
+    console.log("après " + localStorage.getItem("cart"));
+    this.mttotal = this.totalcost + this.fraisLivraison;
+    
   }
 
   plus(ligne) {
@@ -73,6 +82,7 @@ export class AddtocartComponent implements OnInit {
     this.srvCart.addQuantity(ligne, this.nbre);
     this.totalcost = this.srvCart.getCart().totalcost;
     this.mttotal = this.totalcost + this.fraisLivraison;
+    this.totalquantity = this.srvCart.getCart().totalquantity;
   }
 
   moins(ligne) {
@@ -88,6 +98,7 @@ export class AddtocartComponent implements OnInit {
     }
     this.ispositive = true;
     this.mttotal = this.totalcost + this.fraisLivraison;
+    this.totalquantity = this.srvCart.getCart().totalquantity;
   }
 
   commande() { }

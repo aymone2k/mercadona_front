@@ -46,6 +46,10 @@ export class FindallarticlesComponent implements OnInit {
       sessionStorage.removeItem("Mylist")
     }
 
+    if (this.article.stock <= 0) {
+      this.stock = false;
+    }
+
     // Application de la promotion sur la marque Good Goût -15%
     if (this.article.marque === "Good Goût") {
       this.ispromo = true;
