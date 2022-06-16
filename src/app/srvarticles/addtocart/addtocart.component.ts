@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Cart } from 'src/app/model/cart';
 import { Line } from 'src/app/model/line';
 import { User } from 'src/app/model/user';
+import { SrvcrudusersService } from 'src/app/srvusers/srvcrudusers.service';
 import { SrvcartService } from '../srvcart.service';
+
 
 @Component({
   selector: 'app-addtocart',
@@ -24,11 +26,16 @@ export class AddtocartComponent implements OnInit {
   mttotal: number;
   ispositive: boolean = true;
   totalLigneStr: string;
+  isAuth: boolean;
 
-  constructor(private router: Router, private srvCart: SrvcartService) { }
+  constructor(private router: Router, private srvCart: SrvcartService, private srvUser: SrvcrudusersService) { }
 
 
   ngOnInit(): void {
+    this.srvUser.isAuth$.subscribe(
+      (bool: boolean)=>{
+        this.isAuth = bool
+      } )
 
     this.cart = this.srvCart.getCart();
     this.liste = this.cart.liste;
@@ -74,7 +81,7 @@ export class AddtocartComponent implements OnInit {
     localStorage.setItem("cart", JSON.stringify(this.cart));
     console.log("après " + localStorage.getItem("cart"));
     this.mttotal = this.totalcost + this.fraisLivraison;
-    
+
   }
 
   plus(ligne) {
@@ -101,7 +108,6 @@ export class AddtocartComponent implements OnInit {
     this.totalquantity = this.srvCart.getCart().totalquantity;
   }
 
-  commande() { }
 
 }
 

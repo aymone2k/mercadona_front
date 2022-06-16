@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicearticleService } from 'src/app/srvarticles/servicearticle.service';
 import { Router } from '@angular/router';
+import { SrvcrudusersService } from 'src/app/srvusers/srvcrudusers.service';
 
 // import * as variable from 'maVariable';
 
@@ -14,10 +15,14 @@ export class HeaderComponent implements OnInit {
 
   infoconnexion: string;
   str: string;
-  isAuth: boolean = false;
-  constructor(private srv: ServicearticleService, private router: Router) { }
+  isAuth: boolean;
+  constructor(private srv: ServicearticleService, private router: Router, private srvUser: SrvcrudusersService) { }
 
   ngOnInit(): void {
+    this.srvUser.isAuth$.subscribe(
+      (bool: boolean)=>{
+        this.isAuth = bool
+      } )
 
     this.init();
   }
@@ -25,13 +30,14 @@ export class HeaderComponent implements OnInit {
   init() {
     if (sessionStorage.getItem("user") != null) {
       this.infoconnexion = sessionStorage.getItem("user");
-      this.isAuth = true;
+     // this.isAuth = true;
     }
   }
   deconnex() {
-    // this.init();
+    this.srvUser.isAuth$.next(false);
     sessionStorage.removeItem("user");
     localStorage.removeItem("cart");
+    this.router.navigate(['/login'])
   }
 
   search() {

@@ -28,7 +28,7 @@
 
     <!-- LE LOGO -->
     <div class="position-absolute top-50 start-0 translate-middle-y">
-      <a href="/home">
+      <a routerLink="home">
         <img src="/assets/images/logo4.PNG" class="img-fluid rounded w-50" />
       </a>
     </div>
@@ -47,16 +47,16 @@
       <a routerLink="/addtocart">
         <img src="/assets/images/cart3.jpg" class="img-fluid rounded w-25" />
       </a>
-      <a  *ngIf = "isAuth" routerLink="/updateuser/">
+      <a routerLink="/compte" *ngIf="isAuth ==true">
         <img src="/assets/images/compte3.jpg" class="img-fluid rounded w-25" />
       </a>
-      <a  *ngIf = "!isAuth" routerLink="/login">
+      <a routerLink="/login" *ngIf="isAuth ==false">
         <img src="/assets/images/compte3.jpg" class="img-fluid rounded w-25" />
       </a>
     </div>
     >
 
-    <!-- 
+    <!--
     CONTACT / COMPTE / PANIER-->
 
     <div class="position-absolute top-50 start-100 translate-middle w-25">
@@ -88,17 +88,17 @@
         <li class="nav-item">
           <h4> <a class="nav-link link-dark" href="/findallarticles">Tous nos produits|</a></h4>
         </li>
-        <li class="nav-item">
-        <h4><a class="nav-link link-dark" href="/login"> Passer une commande| </a></h4>
+        <li class="nav-item" *ngIf="isAuth==false">
+        <h4><a class="nav-link link-dark"  routerLink="login"> Connexion| </a></h4>
         </li>
-        <li class="nav-item">
-          <h4><a class="nav-link link-dark" href="/subscribe">Inscription| </a></h4>
+        <li class="nav-item"  *ngIf="isAuth==false">
+          <h4><a class="nav-link link-dark" routerLink="subscribe">Inscription| </a></h4>
           </li>
 
       </ul>
-      <form class="d-flex w-auto">
-        <button class="info" routerLink="/cart"><strong>{{infoconnexion}}</strong></button>
+      <div class="d-flex w-auto" *ngIf="isAuth ==true">
+        <button class="info" routerLink="/compte" class="btn btn-outline-danger"><strong>{{infoconnexion}}</strong></button>
         <button (click)="deconnex()" routerLink="/findallarticles" class="btn btn-outline-danger">DECONNEXION</button>
-      </form>
+      </div>
     </div>
   </nav>

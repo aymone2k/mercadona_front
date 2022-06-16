@@ -30,10 +30,16 @@ export class FindallarticlesComponent implements OnInit {
   // pour gérer la promo
   ispromo: boolean = false;
   prixpromo: string;
+  isAuth: boolean;
 
   constructor(private http: HttpClient, private router: Router, private srvart: ServicearticleService, private srvUser: SrvcrudusersService, private srvCart: SrvcartService) { }
 
   ngOnInit(): void {
+
+    this.srvUser.isAuth$.subscribe(
+      (bool: boolean)=>{
+        this.isAuth = bool
+      } )
 
     if (sessionStorage.getItem("Mylist") == null) {
       this.srvart.findAll().subscribe({
