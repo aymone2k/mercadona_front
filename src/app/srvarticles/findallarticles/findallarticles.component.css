@@ -26,10 +26,10 @@
     box-shadow: 0 2px 2px 0;
     padding: 10px;
     text-align: center;
-    background-color: #fcd0e1;
+    background-color: rgb(251,204,204);;
   }
 
   #title {
     font-family: fantasy;
-    background-color: #fcd0e1;
+    background-color: rgb(251,204,204);;
   }

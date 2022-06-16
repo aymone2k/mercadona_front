@@ -1,16 +1,16 @@
 .info{
-    background-color:#f3eadd;
+    background-color:rgb(251,204,204);;
 }
 
 .search-container button:hover {
-    background:  #0a999e;
+    background: rgb(4,155,155);
     width: 50;
     object-position: center;
   }
 
   #s1{
     border-radius: 20px;
-    border-color: #0a999e;
+    border-color: rgb(4,155,155);
     border-block-width: 6px;
 
 }
