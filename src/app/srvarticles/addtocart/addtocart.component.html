@@ -54,18 +54,18 @@
                                 <!-- Quantity -->
                                 <div class="d-flex mb-4" style="max-width: 300px">
                                     <button class="btn btn-primary px-3 me-2 " [disabled]="!ispositive"
-                                        (click)="moins(item)"
+                                        (click)="moins(i)"
                                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                         <i class="fas fa-minus">-</i>
                                     </button>
 
                                     <div class="form-outline">
                                         <input id="form1" min="0" name="quantity" value="{{item.quantite}}"
-                                            type="number" class="form-control" />
+                                            type="number" class="form-control" readonly/>
                                         <label class="form-label" for="form1"></label>
                                     </div>
 
-                                    <button class="btn btn-primary px-3 ms-2" (click)="plus(item)"
+                                    <button class="btn btn-primary px-3 ms-2" (click)="plus(i)"
                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                         <i class="fas fa-plus">+</i>
                                     </button>
@@ -74,7 +74,7 @@
 
                                 <!-- Price -->
                                 <h5 class="text-start text-md-center">
-                                    <strong>{{item.article.prix * item.quantite}}€</strong>
+                                    <strong>{{(item.article.prix * item.quantite).toFixed(2)}}€</strong>
                                 </h5>
                                 <!-- Price -->
                             </div>
@@ -121,7 +121,7 @@
                             <li
                                 class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                 Montant des articles
-                                <h5><span>{{totalcost}}€</span></h5>
+                                <h5><span>{{totalcoststr}}€</span></h5>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                                 Livraison

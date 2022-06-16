@@ -42,11 +42,14 @@ export class SrvcartService {
     this.cart = this.getCart();
     //si on veut ajouter une liste dans le panier plutot que d'ajouter on va juste modifier la qté
     //1- verif si liste est déjà dans le panier
-    console.log("quantité ajoutée" + nbre);
+    console.log("quantité ajoutée " + nbre);
 
-      ligne.quantite = ligne.quantite + nbre;
-      this.cart.totalcost += ligne.article.prix * nbre;
-      this.cart.totalquantity += nbre;
+    //ligne.quantite = ligne.quantite + nbre;
+    let prix = this.cart.liste[ligne].article.prix
+    this.cart.totalcost += prix * nbre;
+    this.cart.totalquantity += nbre;
+    this.cart.liste[ligne].quantite += nbre;
+    console.log(this.cart.liste[ligne].article)
 
     localStorage.setItem("cart", JSON.stringify(this.cart));
 
@@ -55,15 +58,13 @@ export class SrvcartService {
 
 
   getCart() {
-    if (localStorage.getItem("cart") != null)
-    {
+    if (localStorage.getItem("cart") != null) {
       this.cart = JSON.parse(localStorage.getItem("cart"));
     }
-    else 
-    {
+    else {
       this.cart = new Cart();
     }
-    
+
     return this.cart;
   }
 

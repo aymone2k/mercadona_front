@@ -23,7 +23,7 @@ export class AddtocartComponent implements OnInit {
   nbarticles: number;
   fraisLivraison: number;
   cartIsValid: boolean = false;
-  mttotal: number;
+  mttotal: string;
   ispositive: boolean = true;
   totalLigneStr: string;
   isAuth: boolean;
@@ -64,48 +64,61 @@ export class AddtocartComponent implements OnInit {
       this.fraisLivraison = 0;
     }
 
-    this.mttotal = this.totalcost + this.fraisLivraison;
+    this.mttotal = (this.totalcost + this.fraisLivraison).toFixed(2);
   }
 
   clearPanier() {
     localStorage.removeItem("cart");
+    this.cart = new Cart()
+    this.updateaffichage()
   }
 
-  supprimer(line,index) {
-     console.log("avant " + localStorage.getItem("cart"));
-    // console.log("position :" + index)
-    this.cart.liste = this.cart.liste.splice(index, 1);
+  updateaffichage() {
+    this.liste = this.cart.liste;
+    this.totalquantity = this.cart.totalquantity;
+    this.totalcost = this.cart.totalcost;
+    this.totalcoststr = this.cart.totalcost.toFixed(2);
+    this.mttotal = (this.totalcost + this.fraisLivraison).toFixed(2);
+    if (this.totalcost < 49) {
+      this.fraisLivraison = 3;
+    }
+    else {
+      this.fraisLivraison = 0;
+    }
+
+  }
+
+  supprimer(line, index) {    
+    let x = this.cart.liste.splice(index, 1); 
+    console.log(x)
     this.cart.totalcost = Number((this.cart.totalcost - line.article.prix * line.quantite).toFixed(2));
     this.cart.totalquantity -= line.quantite;
-    this.totalcost = this.cart.totalcost;
     localStorage.setItem("cart", JSON.stringify(this.cart));
-    console.log("après " + localStorage.getItem("cart"));
-    this.mttotal = this.totalcost + this.fraisLivraison;
-
+    this.updateaffichage();
   }
 
-  plus(ligne) {
+  plus(indexListe) {
     this.nbre = 1;
-    this.srvCart.addQuantity(ligne, this.nbre);
-    this.totalcost = this.srvCart.getCart().totalcost;
-    this.mttotal = this.totalcost + this.fraisLivraison;
-    this.totalquantity = this.srvCart.getCart().totalquantity;
+    this.srvCart.addQuantity(indexListe, this.nbre);
+    this.cart = this.srvCart.getCart();
+    this.updateaffichage();
+    
   }
 
-  moins(ligne) {
+  moins(indexListe) {
     //if quantiteLigne>1 , appuyer
-    if (ligne.quantite < 1) {
-      this.ispositive = false;
+    if (this.cart.liste[indexListe].quantite < 1) {
+      //this.ispositive = false;
     }
     else {
       this.nbre = -1;
-      this.srvCart.addQuantity(ligne, this.nbre);
-      this.totalcost = this.srvCart.getCart().totalcost;
-      this.ispositive = true;
+      this.srvCart.addQuantity(indexListe, this.nbre);
+      
+      //this.ispositive = true;
     }
-    this.ispositive = true;
-    this.mttotal = this.totalcost + this.fraisLivraison;
-    this.totalquantity = this.srvCart.getCart().totalquantity;
+
+    this.cart = this.srvCart.getCart();
+    this.updateaffichage();
   }
 
 
