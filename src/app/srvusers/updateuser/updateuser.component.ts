@@ -15,6 +15,8 @@ export class UpdateuserComponent implements OnInit {
   user: User = new User();
   message: string;
   upvalid: boolean =false;
+  newmdp: string = '';
+
   constructor(private http: HttpClient, private route: ActivatedRoute, private srv: SrvcrudusersService) { }
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class UpdateuserComponent implements OnInit {
 
 
   update(){
+    this.user.mdp = this.newmdp;
     this.srv.update(this.user);
     this.message = "Mise à jour réussie!"
     this.init();
