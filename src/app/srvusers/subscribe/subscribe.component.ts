@@ -32,6 +32,8 @@ export class SubscribeComponent implements OnInit {
       nom:[null, [Validators.required, Validators.minLength(6), ]],
       prenom:[null, [Validators.required, Validators.minLength(6), ]],
       mail:[null, [Validators.required, Validators.email]],
+      adresse:[null, [Validators.required]],
+      telephone:[null, [Validators.required]],
 
   mdp:[null, [Validators.required, Validators.minLength(3),]],
       confMdp:[null, Validators.required],
@@ -52,6 +54,8 @@ export class SubscribeComponent implements OnInit {
     this.personne.prenom = this.signUpForm.value.prenom;
     this.personne.mail = this.signUpForm.value.mail;
     this.personne.mdp = this.signUpForm.value.mdp;
+    this.personne.adresse = this.signUpForm.value.adresse;
+    this.personne.telephone = this.signUpForm.value.telephone;
     const body = JSON.stringify(this.personne);
     this.http.post<User>("http://localhost:8080/exo/personne", body, {
       headers: new HttpHeaders({
