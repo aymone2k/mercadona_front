@@ -12,19 +12,22 @@ export class UpdatearticleComponent implements OnInit {
 
   id:number;
   article: Article = new Article();
+  art: Article = new Article();
   message: string;
+  valide: boolean = false;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-    })
 
-    this.init();
+
+   // this.init();
   }
-
+find(id){
+  this.id = id;
+  this.init();
+}
   init()
   {
     this.http.get<Article>("http://localhost:8080/exo/articlerest/" + this.id).subscribe(
@@ -50,6 +53,7 @@ export class UpdatearticleComponent implements OnInit {
     }).subscribe(
       response => {
         this.message = "Succes! Mise à jour réussie!";
+        this.valide =true;
         this.init();
 
       },

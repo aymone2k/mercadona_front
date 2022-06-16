@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './order/cart/cart.component';
 
+
+
 import { HomeComponent } from './shared/home/home.component';
+import { LoginAdminComponent } from './srvadmin/login-admin/login-admin.component';
+import { PageAdminComponent } from './srvadmin/page-admin/page-admin.component';
 import { AddtocartComponent } from './srvarticles/addtocart/addtocart.component';
 import { CreatearticleComponent } from './srvarticles/createarticle/createarticle.component';
 import { DeloreditarticlesComponent } from './srvarticles/deloreditarticles/deloreditarticles.component';
@@ -28,6 +32,7 @@ import { UpdateuserComponent } from './srvusers/updateuser/updateuser.component'
 import { UpdateuserpassComponent } from './srvusers/updateuserpass/updateuserpass.component';
 import { TestcommandeComponent } from './testcommande/testcommande.component';
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
    { path: 'addtocart', component: AddtocartComponent },
@@ -40,7 +45,7 @@ const routes: Routes = [
    { path: 'orderbypricedesc', component: OrderbypricedescComponent },
    { path: 'selectbybrand', component: SelectbybrandComponent },
    { path: 'selectbypricebet', component: SelectbypricebetweenComponent },
-   { path: 'updatearticle/:id', component: UpdatearticleComponent },
+   { path: 'updatearticle', component: UpdatearticleComponent },
    { path: 'deleteuser', component: DeleteuserComponent },
    { path: 'findallorders', component: FindallplacedordersComponent },
    { path: 'findallusers', component: FindallusersComponent },
@@ -54,6 +59,8 @@ const routes: Routes = [
    { path: 'updateuserpass/:id', component: UpdateuserpassComponent},
    { path: 'cart', component: CartComponent},
    { path: 'compte', component: CompteComponent},
+   { path: 'admin', component: LoginAdminComponent},
+   { path: 'pageAdmin', component: PageAdminComponent},
    {path: 'test', component: TestcommandeComponent}
 ];
 

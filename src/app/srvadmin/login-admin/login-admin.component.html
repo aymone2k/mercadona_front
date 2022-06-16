@@ -1,0 +1,74 @@
+<section class="vh-100">
+  <div class="container-fluid">
+
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" id="title">AUTHENTIFICATION ADMIN:</p>
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="/assets/images/affiche2.jpg" class="img-fluid" alt="pub">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form [formGroup]="signInForm" (ngSubmit)="loginv3()">
+          <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+          <div class="text-center">*Champs obligatoires</div>
+          <div class="mb-3 mt-3">
+
+            <label class="h6">Mon Email: <span *ngIf="controlForm['email'].errors">
+                * </span></label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Veuillez saisir une adresse-mail valide.">
+            <div *ngIf="controlForm['email'].touched && controlForm['email'].errors" class="alert alert-danger">
+              <div *ngIf="controlForm['email'].errors['required']">"Ce champ est requis" </div>
+              <div *ngIf="controlForm['email'].errors"> "Le mail saisi est invalide"</div>
+            </div>
+            <div class="md-3 mt-3">
+              <label class="h6">Mot de passe : <span *ngIf="controlForm['password'].errors">
+                  * </span></label>
+              <div class="input-group ">
+                <input [type]="fieldTextType1 ?'text':'password'" class="form-control" formControlName="password" placeholder="Veuillez saisir votre mot de passe.">
+                <div class="input-group-prepend">
+                  <button type="button" (click)="toogleFieldText1() "
+                    class="input-group-text theme-btn--dark1 btn--md show-password">Dévoiler</button>
+                </div>
+
+              </div>
+
+              <div *ngIf="controlForm['password'].touched && controlForm['password'].errors" class="alert alert-danger">
+                <div *ngIf="controlForm['password'].errors['required']">"Ce champ est requis"</div>
+
+              </div>
+            </div>
+            <!-- <div class="col">
+              <div class="border-top">
+                <a routerLink="/updatepass" class=" ">Mot de passe oublié </a>
+              </div>
+            </div> -->
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0 border-top">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                Se souvenir de moi
+              </label>
+            </div>
+            <div class="border-top">
+              <a routerLink="/updatepass" class=" ">Mot de passe oublié </a>
+            </div>
+            <!-- <a href="/updatepass" class="text-body">Mot de passe oublié?</a> -->
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary text-center" [disabled]="signInForm.invalid"
+              style="object-position: center;">Me connecter</button>
+          </div>
+        </form>
+
+        <div class="text-center text-lg-start mt-4 pt-2">
+          <p class="small fw-bold mt-2 pt-1 mb-0 text-center">Vous n'avez pas encore de compte? <a href="/subscribe"
+              class="link-danger">Créer un nouveau compte</a></p>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</section>

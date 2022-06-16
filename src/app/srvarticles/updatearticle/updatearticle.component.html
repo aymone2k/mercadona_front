@@ -3,61 +3,73 @@
     <span class="h1 fw-bold mb-0">Mise à jour d'un article</span>
 </div>
 
-<section class="vh-100">
+
     <div class="container-fluid">
+
         <div class="row">
+          <h6>saisir l'id de l'article</h6>
+
+          <div class="col-sm-10">
+            <input type="text" class="form-control" [(ngModel)]="art.id"  >
+          </div>
+          <div class="pt-2 mb-3">
+            <button class="btn btn-success btn-lg btn-block" type="button" (click)="find(art.id)"
+                style="object-position: center;">selectionner</button>
+
+          </div>
+          <hr>
             <div class="col-sm-6 text-white">
 
-              
+
 
                 <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                  <div class="pt-2 mb-3" *ngIf="valide">
 
+                    <div class="alert alert-success">
+                        <strong>{{message}}</strong>
+                    </div>
+                </div>
                     <div class="container">
                         <form style="width: 23rem;">
 
-                            <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> <strong>
-                                    ID </strong>
-                            <div class="form-outline">
-                                <input type="number" name="login" [(ngModel)]="article.id" id="form2Example18"
+                          <h6>ID: </h6>
+                            <div class="">
+                                <input type="number" name="login" [(ngModel)]="article.id"
                                     class="form-control form-control-lg" readonly />
                             </div>
 
-                            <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                                <strong>MARQUE </strong>
-                            <div class="form-outline ">
-                                <input type="text" name="marque" [(ngModel)]="article.marque" id="form2Example28"
+                            <h6>MARQUE: </h6>
+                            <div class=" ">
+                                <input type="text" name="marque" [(ngModel)]="article.marque"
                                     class="form-control form-control-lg" />
                             </div>
 
-                            <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                                <strong>PRIX</strong>
-                            <div class="form-outline ">
-                                <input type="number" name="prix" [(ngModel)]="article.prix" id="form2Example18"
+                            <h6>PRIX:</h6>
+                            <div class=" ">
+                                <input type="number" name="prix" [(ngModel)]="article.prix"
                                     class="form-control form-control-lg" />
                             </div>
 
-                            <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                                <strong>DESCRIPTION </strong>
-                            <div class="form-outline">
+                            <h6>DESCRIPTION:</h6>
+                            <div class="">
                                 <input type="text" name="description" [(ngModel)]="article.description"
-                                    id="form2Example28" class="form-control form-control-lg" />
-                            </div>
-
-                            <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                                <strong>URL </strong>
-                            <div class="form-outline">
-                                <input type="text" name="url" [(ngModel)]="article.url" id="form2Example28"
                                     class="form-control form-control-lg" />
                             </div>
 
-                            <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                                <strong>STOCK </strong>
-                            <div class="form-outline">
-                                <input type="number" name="stock" [(ngModel)]="article.stock" id="form2Example28"
+
+                            <div class="">
+                              <h6>URL IMAGE: </h6>
+                                <input type="text" name="url" [(ngModel)]="article.url"
                                     class="form-control form-control-lg" />
                             </div>
 
-                            <div class="form-outline">
+                            <h6>STOCK: </h6>
+                            <div class="">
+                                <input type="number" name="stock" [(ngModel)]="article.stock"
+                                    class="form-control form-control-lg" />
+                            </div>
+
+                            <div class="">
                                 <input type="hidden" name="version" [(ngModel)]="article.version"
                                     class="form-control form-control-lg" />
                             </div>
@@ -68,12 +80,7 @@
 
                             </div>
 
-                            <div class="pt-2 mb-3">
 
-                                <div class="alert alert-success">
-                                    <strong>{{message}}</strong>
-                                </div>
-                            </div>
                         </form>
 
                     </div>
@@ -88,4 +95,3 @@
             </div>
         </div>
     </div>
-</section>

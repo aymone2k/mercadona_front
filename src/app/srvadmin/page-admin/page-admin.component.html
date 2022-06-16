@@ -1,0 +1,28 @@
+<h2>Page Administrateur</h2>
+<h4>Bonjour, {{admin.prenom}} {{admin.nom|uppercase}}</h4>
+<hr>
+<div class="container">
+  <button  (click)="OnModif1()" class="btn btn-outline-danger">liste des utilisateurs</button>
+  <button  (click)="OnModif2()"class="btn btn-outline-danger">supprimer un utilisateur</button>
+  <hr>
+  <button  (click)="OnModif3()" class="btn btn-outline-danger">enregistrer un article</button>
+  <button  (click)="OnModif4()"class="btn btn-outline-danger">modifier un article</button>
+  <button  (click)="OnModif5()" class="btn btn-outline-danger">afficher la liste des articles</button>
+
+
+  <div *ngIf="findusers">
+    <app-findallusers></app-findallusers>
+  </div>
+  <div *ngIf="deleteuser">
+  <app-deleteuser></app-deleteuser>
+  </div>
+  <div *ngIf="createarticle">
+   <app-createarticle></app-createarticle>
+  </div>
+  <div *ngIf="updatearticle">
+    <app-updatearticle></app-updatearticle>
+  </div>
+  <div *ngIf="findarticles">
+    <app-findallarticles></app-findallarticles>
+  </div>
+</div>
