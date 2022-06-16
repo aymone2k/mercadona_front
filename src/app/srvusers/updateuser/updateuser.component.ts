@@ -14,7 +14,7 @@ export class UpdateuserComponent implements OnInit {
   id:string;
   user: User = new User();
   message: string;
-
+  upvalid: boolean =false;
   constructor(private http: HttpClient, private route: ActivatedRoute, private srv: SrvcrudusersService) { }
 
   ngOnInit(): void {
@@ -32,6 +32,7 @@ export class UpdateuserComponent implements OnInit {
       response => {
         console.log("********Utilisateur trouvé!********")
         this.user = response;
+        console.log(this.user)
       }
       ,
       err => {
@@ -39,12 +40,13 @@ export class UpdateuserComponent implements OnInit {
       }
     )
   }
-  
+
 
   update(){
     this.srv.update(this.user);
-    this.message = sessionStorage.getItem("msg");
+    this.message = "Mise à jour réussie!"
     this.init();
+    this.upvalid=true;
 
   }
 }

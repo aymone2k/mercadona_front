@@ -33,7 +33,10 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient, private route: ActivatedRoute, private srv: SrvcrudusersService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    //sessionStorage.removeItem("user");
+    this.srv.isAuth$.subscribe(
+      (bool: boolean)=>{
+        this.isAuth = bool
+      } )
     this.initSignInForm();
   }
 
@@ -67,7 +70,7 @@ export class LoginComponent implements OnInit {
          this.str = "Erreur d'accès";
          this.messageconnexion = "Attention! Identifiant ou mot de passe erronné!"
        }
- 
+
      )
    } */
   loginv3() {
@@ -94,7 +97,7 @@ export class LoginComponent implements OnInit {
 
     });
   }
-  
+
   loginv4() {
     const email = this.signInForm.value.email;
     const mdp = this.signInForm.value.password;
@@ -105,7 +108,7 @@ export class LoginComponent implements OnInit {
     ).catch(
       (error) => {
         console.log(error)
-        this.errorMessage = error.message;
+        this.errorMessage = "Votre adresse email ou votre mot de passe est invalide";
       }
     )
    // this.user = this.srv.findbyId(email, mdp)
