@@ -11,7 +11,7 @@ export class PageAdminComponent implements OnInit {
   createarticle : boolean=false;
   updatearticle: boolean=false;
   findarticles : boolean=false;
-admin:{nom:string, prenom:string}
+admin:{nom:string, prenom:string};
 
   constructor() { }
 
@@ -27,12 +27,14 @@ admin:{nom:string, prenom:string}
     this.findarticles = false;
   }
   OnModif2(){
-    this.deleteuser = true;
+
+
     this.findusers = false;
     this.deleteuser = false;
     this.createarticle = false;
-
     this.findarticles = false;
+    this.deleteuser = true;
+    console.log("cc"+this.deleteuser);
   }
   OnModif3(){
     this.createarticle = true;

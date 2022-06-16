@@ -1,1 +1,74 @@
-<p>deleteuser works!</p>
+<div class="px-5 ms-xl-4">
+  <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+  <span class="h1 fw-bold mb-0">Suppression d'un utilisateur</span>
+</div>
+
+
+  <div class="container-fluid">
+
+      <div class="row">
+        <h6>Saisir l'email de l'utilisateur</h6>
+
+        <div class="col-sm-10">
+          <input type="text" class="form-control" [(ngModel)]="usr.mail"  >
+        </div>
+        <div class="pt-2 mb-3">
+          <button class="btn btn-success btn-lg btn-block" type="button" (click)="find(usr.mail)"
+              style="object-position: center;">selectionner</button>
+
+        </div>
+        <hr>
+          <div class="col-sm-6 text-white">
+
+
+
+              <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                <div class="pt-2 mb-3" *ngIf="valide">
+
+                  <div class="alert alert-success">
+                      <strong>{{message}}</strong>
+                  </div>
+              </div>
+
+
+                  <div class="container">
+                      <form style="width: 23rem;">
+
+                        <h6>Mail: </h6>
+                          <div class="">
+                              <input type="text" name="login" [(ngModel)]="user.mail"
+                                  class="form-control form-control-lg" readonly />
+                          </div>
+
+                          <h6>NOM: </h6>
+                          <div class=" ">
+                              <input type="text" name="marque" [(ngModel)]="user.nom"
+                                  class="form-control form-control-lg" readonly />
+                          </div>
+
+                          <h6>PRENOM:</h6>
+                          <div class=" ">
+                              <input type="text" name="prix" [(ngModel)]="user.prenom"
+                                  class="form-control form-control-lg" readonly />
+                          </div>
+
+
+
+                          <div class="pt-2 mb-3">
+                              <button class="btn btn-info btn-lg btn-block" type="button" (click)="delete()"
+                                  style="object-position: center;">Supprimer</button>
+
+                          </div>
+
+
+                      </form>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+
