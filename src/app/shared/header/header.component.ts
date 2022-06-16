@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
      // this.isAuth = true;
     }
   }
+  
   deconnex() {
     this.srvUser.isAuth$.next(false);
     sessionStorage.removeItem("user");

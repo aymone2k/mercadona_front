@@ -29,8 +29,8 @@ export class SubscribeComponent implements OnInit {
   }
   initSignUpForm(){
     this.signUpForm = this.formBuilder.group({
-      nom:[null, [Validators.required, Validators.minLength(6), ]],
-      prenom:[null, [Validators.required, Validators.minLength(6), ]],
+      nom:[null, [Validators.required, Validators.minLength(2), ]],
+      prenom:[null, [Validators.required, Validators.minLength(2), ]],
       mail:[null, [Validators.required, Validators.email]],
       adresse:[null, [Validators.required]],
       telephone:[null, [Validators.required]],

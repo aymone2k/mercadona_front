@@ -7,7 +7,7 @@
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Créer votre compte Maaam</p>
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" id ="title">INSCRIPTION:</p>
 
                    <form class="mx-1 mx-md-4"[formGroup]="signUpForm" (ngSubmit)="create()">
 
@@ -15,12 +15,12 @@
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <label class="h6">Nom :<span *ngIf="controlForm['nom'].errors">
-                          * (6 lettres minimum)
+                          * (2 lettres minimum)
                         </span></label>
                         <input type="text" id="form3Example1c" name="nom" formControlName="nom" class="form-control" />
                         <div *ngIf="controlForm['nom'].touched && controlForm['nom'].errors" class="alert alert-danger">
                           <div *ngIf="controlForm['nom'].errors['required']">Ce champ est requis</div>
-                          <div *ngIf="controlForm['nom'].errors['minlength']">6 lettres minimun</div>
+                          <div *ngIf="controlForm['nom'].errors['minlength']">2 lettres minimun</div>
                         </div>
 
 
@@ -31,12 +31,12 @@
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
                           <label class="h6">Prenom :<span *ngIf="controlForm['prenom'].errors">
-                            * (6 lettres minimum)
+                            * (2 lettres minimum)
                           </span></label>
                           <input type="text" id="form3Example1c" name="prenom" formControlName="prenom" class="form-control" />
                           <div *ngIf="controlForm['prenom'].touched && controlForm['prenom'].errors" class="alert alert-danger">
                             <div *ngIf="controlForm['prenom'].errors['required']">Ce champ est requis</div>
-                            <div *ngIf="controlForm['prenom'].errors['minlength']">6 lettres minimun</div>
+                            <div *ngIf="controlForm['prenom'].errors['minlength']">2 lettres minimun</div>
                           </div>
                         </div>
                       </div>
@@ -49,8 +49,8 @@
                         </span></label>
                         <input type="email" name="mail" formControlName="mail" id="form3Example3c" class="form-control" />
                         <div *ngIf="controlForm['mail'].touched && controlForm['mail'].errors" class="alert alert-danger">
-                          <div *ngIf="controlForm['mail'].errors['required']">Ce champ est requis</div>
-                          <div *ngIf="controlForm['mail'].errors">cet email est invalide</div>
+                          <div *ngIf="controlForm['mail'].errors['required']">Ce champ est requis.</div>
+                          <div *ngIf="controlForm['mail'].errors">Cet email est invalide.</div>
                         </div>
                       </div>
                     </div>
@@ -58,11 +58,11 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <label class="h6">Password : <span *ngIf="controlForm['mdp'].errors">
+                        <label class="h6">Mot de passe : <span *ngIf="controlForm['mdp'].errors">
                           *  </span></label>
                         <input [type]="fieldTextType1 ?'text':'password'" name="mdp" formControlName="mdp" id="form3Example4c" class="form-control" />
                         <div class="input-group-prepend">
-                          <button type="button"    (click)="toogleFieldText1()" class="input-group-text theme-btn--dark1 btn--md show-password">show</button>
+                          <button type="button"    (click)="toogleFieldText1()" class="input-group-text theme-btn--dark1 btn--md show-password">Dévoiler</button>
                            </div>
                         <div *ngIf="controlForm['mdp'].touched && controlForm['mdp'].errors" class="alert alert-danger">
                           <div *ngIf="controlForm['mdp'].errors['required']">Ce champ est requis</div>
@@ -74,15 +74,15 @@
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <label class="h6">Confirmation Password : <span *ngIf="controlForm['confMdp'].errors">
+                        <label class="h6">Confirmation de votre mot de passe : <span *ngIf="controlForm['confMdp'].errors">
                           *  </span></label>
                         <input [type]="fieldTextType2 ?'text':'password'" name="confMdp" formControlName="confMdp" id="form3Example4c" class="form-control" />
                         <div class="input-group-prepend">
-                          <button type="button"    (click)="toogleFieldText2()" class="input-group-text theme-btn--dark1 btn--md show-password">show</button>
+                          <button type="button"    (click)="toogleFieldText2()" class="input-group-text theme-btn--dark1 btn--md show-password">Dévoiler</button>
                            </div>
                         <div *ngIf="controlForm['confMdp'].touched && controlForm['confMdp'].errors" class="alert alert-danger">
-                          <div *ngIf="controlForm['confMdp'].errors['required']">Ce champ est requis</div>
-                          <div *ngIf="controlForm['confMdp'].errors['mustMatch']">Attention, la confirmation Password ne correspond pas au password</div>
+                          <div *ngIf="controlForm['confMdp'].errors['required']">Ce champ est requis.</div>
+                          <div *ngIf="controlForm['confMdp'].errors['mustMatch']">Attention, les mots de passe daisis sont différents.</div>
                         </div>
                       </div>
                     </div>
@@ -94,7 +94,7 @@
                         </span></label>
                         <input type="text" name="adresse" formControlName="adresse" id="form3Example3c" class="form-control" />
                         <div *ngIf="controlForm['mail'].touched && controlForm['adresse'].errors" class="alert alert-danger">
-                          <div *ngIf="controlForm['adresse'].errors['required']">Ce champ est requis</div>
+                          <div *ngIf="controlForm['adresse'].errors['required']">Ce champ est requis.</div>
 
                         </div>
                       </div>
@@ -107,8 +107,8 @@
                         </span></label>
                         <input type="text" name="telephone" formControlName="telephone" id="form3Example3c" class="form-control" />
                         <div *ngIf="controlForm['telephone'].touched && controlForm['telephone'].errors" class="alert alert-danger">
-                          <div *ngIf="controlForm['mail'].errors['required']">Ce champ est requis</div>
-                          <div *ngIf="controlForm['telephone'].errors">cet email est invalide</div>
+                          <div *ngIf="controlForm['mail'].errors['required']">Ce champ est requis.</div>
+                          <div *ngIf="controlForm['telephone'].errors">Cet email est invalide.</div>
                         </div>
                       </div>
                     </div>
@@ -116,20 +116,20 @@
                     <div class="form-check d-flex justify-content-center mb-5">
                       <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                       <label class="form-check-label" for="form2Example3">
-                       J'accepte les <a href="#!">conditions d'utilisation de services Maaam</a>
+                       J'accepte les <a href="#!">conditions d'utilisation de services Maaam.</a>
                       </label>
                     </div>
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <button type="submit" class="btn btn-primary" [disabled]="signUpForm.invalid">Créer mon compte</button>
-  <button class="btn btn-secondary" type="reset" (click)="onResetForm()">Annuler</button>
+  <button class="btn btn-secondary" type="reset" (click)="onResetForm()">Tout effacer.</button>
                     </div>
 
 
                   </form>
                   <div class="col-12">
                     <div class="border-top mt-4">
-                        <a routerLink="/login" class="no-account h6">J'ai déjà un compte, je me connecte ici</a>
+                      <h3>J'ai déjà un compte,<a routerLink="/login" class="no-account h6"> je me connecte ici.</a></h3>
                     </div>
                   </div>
                 </div>
