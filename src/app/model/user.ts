@@ -3,10 +3,12 @@ export class User {
     mdp: string;
     nom: string;
     prenom: string;
+    adresse: string;
+    telephone: string;
     role: string;
     version: number;
 
-    constructor() { 
-      
+    constructor() {
+
     }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './order/cart/cart.component';
+
 import { HomeComponent } from './shared/home/home.component';
 import { AddtocartComponent } from './srvarticles/addtocart/addtocart.component';
 import { CreatearticleComponent } from './srvarticles/createarticle/createarticle.component';
@@ -14,6 +15,7 @@ import { SelectbybrandComponent } from './srvarticles/selectbybrand/selectbybran
 import { SelectbypricebetweenComponent } from './srvarticles/selectbypricebetween/selectbypricebetween.component';
 import { UpdatearticleComponent } from './srvarticles/updatearticle/updatearticle.component';
 import { BillComponent } from './srvusers/bill/bill.component';
+import { CompteComponent } from './srvusers/compte/compte.component';
 import { DeleteuserComponent } from './srvusers/deleteuser/deleteuser.component';
 import { FindallplacedordersComponent } from './srvusers/findallplacedorders/findallplacedorders.component';
 import { FindallusersComponent } from './srvusers/findallusers/findallusers.component';
@@ -51,6 +53,7 @@ const routes: Routes = [
    { path: 'updatepass', component: UpdatepassComponent},
    { path: 'updateuserpass/:id', component: UpdateuserpassComponent},
    { path: 'cart', component: CartComponent},
+   { path: 'compte', component: CompteComponent},
    {path: 'test', component: TestcommandeComponent}
 ];
 

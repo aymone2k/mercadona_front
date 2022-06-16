@@ -33,7 +33,8 @@ import { UpdateuserpassComponent } from './srvusers/updateuserpass/updateuserpas
 import { PurchaseproductComponent } from './srvarticles/purchaseproduct/purchaseproduct.component';
 import { CartComponent } from './order/cart/cart.component';
 import { TestcommandeComponent } from './testcommande/testcommande.component';
-import { PagecartComponent } from './order/pagecart/pagecart.component'
+import { PagecartComponent } from './order/pagecart/pagecart.component';
+import { CompteComponent } from './srvusers/compte/compte.component'
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { PagecartComponent } from './order/pagecart/pagecart.component'
     PurchaseproductComponent,
     CartComponent,
     TestcommandeComponent,
+    CompteComponent,
   ],
   imports: [
     BrowserModule,
