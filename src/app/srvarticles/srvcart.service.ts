@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Article } from '../model/article';
 import { Cart } from '../model/cart';
 import { Line } from '../model/line';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
